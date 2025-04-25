@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  background-color: #1c1c1c;
+  font-family: "Georgia", serif;
+}
+
+.MuiTypography-h4 {
+  color: #d1a954;
+}
+
+button.MuiButton-contained {
+  background-color: #d1a954;
+  color: #1c1c1c;
+  font-weight: bold;
+}
+
+/* Scroll general dentro del contenido scrolleable */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4e3c3; /* el mismo fondo de la carta */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c2933f; /* dorado */
+  border-radius: 8px;
+  border: 2px solid #f4e3c3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a5782c; /* más oscuro al pasar el mouse */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c2933f #f4e3c3;
+}
