@@ -112,7 +112,7 @@ export default function ResultView({ regente, desafio, ciclo }: ResultProps) {
     <Box
       sx={{
         mt: 2,
-        width: "95%",
+        width: "90%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
