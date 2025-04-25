@@ -34,25 +34,59 @@ function App() {
         <Box
           sx={{
             height: "100vh",
+            width: "100vw",
             backgroundColor: "#f4e3c3",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            cursor: "pointer",
           }}
-          onClick={() => setShowIntro(false)}
         >
-          <img
-            src="/assets/mitarot2.jpg"
-            alt="Carta Introductoria"
-            style={{
-              maxWidth: "90%",
-              maxHeight: "90%",
-              objectFit: "contain",
+          <Box
+            sx={{
+              position: "relative",
+              width: "min(90vw, 56vh)", // proporción 3:5
+              aspectRatio: "3 / 5",
               borderRadius: "12px",
+              overflow: "hidden",
               boxShadow: "0 0 30px rgba(0,0,0,0.5)",
             }}
-          />
+          >
+            <img
+              src="/assets/mitarot2.jpg"
+              alt="Carta Introductoria"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+
+            {/* Botón escalable en base al tamaño de la carta */}
+            <Button
+              variant="contained"
+              onClick={() => setShowIntro(false)}
+              sx={{
+                position: "absolute",
+                bottom: "15%",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "70%", // 🔥 relativo al ancho de la carta
+                height: "6vh", // 🔥 relativo al alto del viewport
+                fontSize: "2.2vh", // 🔥 escala del texto proporcional
+                backgroundColor: "#c2933f",
+                color: "#1e1e1e",
+                fontWeight: "bold",
+                borderRadius: "10px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.4)",
+                "&:hover": {
+                  backgroundColor: "#a5782c",
+                },
+              }}
+            >
+              ¡Vamos!
+            </Button>
+          </Box>
         </Box>
       ) : (
         <Container
