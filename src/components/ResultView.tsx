@@ -109,7 +109,15 @@ function TarotResultCard({
 
 export default function ResultView({ regente, desafio, ciclo }: ResultProps) {
   return (
-    <Box sx={{ mt: 2 }}>
+    <Box
+      sx={{
+        mt: 2,
+        width: "95%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <TarotResultCard number={regente} title="Carta Regente" />
       <TarotResultCard number={desafio} title="Carta Desafío" />
       <TarotResultCard number={ciclo} title="Carta del Ciclo" />
