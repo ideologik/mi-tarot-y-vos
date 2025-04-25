@@ -50,8 +50,7 @@ function TarotResultCard({
         boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
         p: 2,
         my: 2,
-        width: "100%",
-        maxWidth: 320,
+        width: "95%",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -112,6 +111,7 @@ export default function ResultView({ regente, desafio, ciclo }: ResultProps) {
     <Box
       sx={{
         mt: 2,
+        ml: 2,
         width: "90%",
         display: "flex",
         flexDirection: "column",
