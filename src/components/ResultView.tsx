@@ -69,7 +69,7 @@ function TarotResultCard({
         }}
       >
         <img
-          src="/assets/mi-tarot-y-vos.png"
+          src="/assets/mitarot2.jpg"
           alt="Carta decorativa"
           style={{
             width: "100%",

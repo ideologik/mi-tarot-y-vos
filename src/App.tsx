@@ -43,10 +43,12 @@ function App() {
           onClick={() => setShowIntro(false)}
         >
           <img
-            src="/assets/mi-tarot-y-vos.png"
+            src="/assets/mitarot2.jpg"
             alt="Carta Introductoria"
             style={{
-              height: "90%",
+              maxWidth: "90%",
+              maxHeight: "90%",
+              objectFit: "contain",
               borderRadius: "12px",
               boxShadow: "0 0 30px rgba(0,0,0,0.5)",
             }}
