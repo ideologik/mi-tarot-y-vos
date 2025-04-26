@@ -1,0 +1,22 @@
+{
+  "name": "Mi Tarot y Vos",
+  "short_name": "MiTarot",
+  "description": "Calculadora mágica de cartas regentes, desafío y ciclo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4e3c3",
+  "theme_color": "#c2933f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon-new.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/mitarot2.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
