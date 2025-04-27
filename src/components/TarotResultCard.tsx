@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, Modal } from "@mui/material";
 
 const tarotNames: Record<number, string> = {
   0: "El Loco",
@@ -24,6 +25,32 @@ const tarotNames: Record<number, string> = {
   20: "El Juicio",
   21: "El Mundo",
   22: "El Loco", // Igual que 0
+};
+
+const tarotDescriptions: Record<number, string> = {
+  0: "Nuevos comienzos, libertad y espontaneidad.",
+  1: "Poder de manifestación, habilidad y concentración.",
+  2: "Intuición, misterio y conocimiento oculto.",
+  3: "Fertilidad, creatividad y abundancia.",
+  4: "Autoridad, estructura y estabilidad.",
+  5: "Sabiduría espiritual, tradición y enseñanza.",
+  6: "Decisiones importantes, relaciones y armonía.",
+  7: "Victoria, determinación y control.",
+  8: "Equilibrio, verdad y responsabilidad.",
+  9: "Introspección, sabiduría y búsqueda interior.",
+  10: "Cambios, ciclos y destino.",
+  11: "Coraje, paciencia y control interno.",
+  12: "Sacrificio, pausa y nueva perspectiva.",
+  13: "Transformación, finales y nuevos comienzos.",
+  14: "Moderación, equilibrio y armonía.",
+  15: "Ataduras, tentaciones y materialismo.",
+  16: "Ruptura, revelación y cambio abrupto.",
+  17: "Esperanza, inspiración y serenidad.",
+  18: "Ilusiones, intuición y subconsciente.",
+  19: "Éxito, vitalidad y alegría.",
+  20: "Evaluación, renacimiento y llamado interior.",
+  21: "Completitud, realización y éxito.",
+  22: "Nuevos comienzos, libertad y espontaneidad.", // Igual que 0
 };
 
 function getCardImage(number: number): string {
@@ -63,69 +90,106 @@ interface ResultProps {
 
 export default function TarotResultCard({ number, title }: ResultProps) {
   const name = tarotNames[number];
+  const description = tarotDescriptions[number];
   const image = getCardImage(number);
 
-  return (
-    <Box
-      sx={{
-        backgroundColor: "#f4e3c3",
-        border: "2px solid #c2933f",
-        borderRadius: "12px",
-        boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
-        p: 2,
-        my: 2,
-        width: "95%",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 2,
-      }}
-    >
-      {/* Imagen de la carta */}
-      <Box
-        sx={{
-          width: 160,
-          height: 240,
-          borderRadius: "6px",
-          overflow: "hidden",
-          border: "1px solid #c2933f",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-        }}
-      >
-        <img
-          src={image}
-          alt={name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      </Box>
+  const [open, setOpen] = useState(false);
 
-      {/* Títulos */}
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <>
       <Box
+        onClick={handleOpen}
         sx={{
           backgroundColor: "#f4e3c3",
+          border: "2px solid #c2933f",
+          borderRadius: "12px",
+          boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
+          p: 2,
+          my: 2,
+          width: "95%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          width: "70%",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 2,
+          cursor: "pointer",
+          "&:hover": {
+            backgroundColor: "#f0d8aa",
+          },
         }}
       >
-        <Typography
-          sx={{ fontWeight: "bold", color: "#2e1b0e", fontSize: "1rem" }}
+        {/* Imagen */}
+        <Box
+          sx={{
+            width: 160,
+            height: 240,
+            borderRadius: "6px",
+            overflow: "hidden",
+            border: "1px solid #c2933f",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+          }}
         >
-          {title}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{ color: "#2e1b0e", fontWeight: "bold", mt: 0.5 }}
+          <img
+            src={image}
+            alt={name}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </Box>
+
+        {/* Título */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            width: "70%",
+          }}
         >
-          {number} - {name}
-        </Typography>
+          <Typography
+            sx={{ fontWeight: "bold", color: "#2e1b0e", fontSize: "1rem" }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ color: "#2e1b0e", fontWeight: "bold", mt: 0.5 }}
+          >
+            {number} - {name}
+          </Typography>
+        </Box>
       </Box>
-    </Box>
+
+      {/* Popup Modal */}
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{
+            backgroundColor: "#f4e3c3",
+            border: "2px solid #c2933f",
+            borderRadius: "12px",
+            p: 4,
+            mx: "auto",
+            my: "20vh",
+            width: "80%",
+            maxWidth: 400,
+            boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+            textAlign: "center",
+          }}
+        >
+          <Typography variant="h5" sx={{ mb: 2, color: "#2e1b0e" }}>
+            {name}
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#2e1b0e" }}>
+            {description}
+          </Typography>
+        </Box>
+      </Modal>
+    </>
   );
 }

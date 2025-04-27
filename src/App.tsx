@@ -17,12 +17,6 @@ function App() {
   }>(null);
   const [edad, setEdad] = useState<number | null>(null);
 
-  const handleClick = () => {
-    if (!birthDate) return;
-    const res = calculateTarotNumbers(birthDate);
-    setResult(res);
-  };
-
   const formatDate = (date: Date | null) => {
     if (!date) return "";
     return date.toLocaleDateString("es-AR");
@@ -130,6 +124,14 @@ function App() {
                   years--;
                 }
                 setEdad(years);
+
+                // Calculamos directamente las cartas al elegir fecha
+                const res = calculateTarotNumbers(newValue);
+                setResult(res);
+              } else {
+                setBirthDate(null);
+                setEdad(null);
+                setResult(null);
               }
             }}
             slotProps={{
@@ -152,22 +154,6 @@ function App() {
               Edad: {edad}
             </Typography>
           )}
-
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#c2933f",
-              color: "#1e1e1e",
-              fontWeight: "bold",
-              mb: 2,
-              "&:hover": {
-                backgroundColor: "#a5782c",
-              },
-            }}
-            onClick={handleClick}
-          >
-            Calcular cartas
-          </Button>
 
           {result && (
             <Box
