@@ -15,24 +15,42 @@ function App() {
     desafio: number;
     ciclo: number;
   }>(null);
-  const [edad, setEdad] = useState<number | null>(null);
+  const [, setEdad] = useState<number | null>(null);
 
-  const formatDate = (date: Date | null) => {
-    if (!date) return "";
-    return date.toLocaleDateString("es-AR");
-  };
+  // const formatDate = (date: Date | null) => {
+  //   if (!date) return "";
+  //   return date.toLocaleDateString("es-AR");
+  // };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={es}>
       {showIntro ? (
         <Box
           sx={{
+            position: "relative",
             height: "100vh",
             width: "100vw",
+            overflow: "hidden",
             backgroundColor: "#f4e3c3",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: "url('/assets/background-tarot.jpg')",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center center",
+              backgroundAttachment: "fixed",
+              backgroundSize: "cover",
+              filter: "blur(5px)",
+              zIndex: 0,
+            },
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            zIndex: 1,
           }}
         >
           <Box
@@ -43,6 +61,7 @@ function App() {
               borderRadius: "12px",
               overflow: "hidden",
               boxShadow: "0 0 30px rgba(0,0,0,0.5)",
+              filter: "blur(0px)",
             }}
           >
             <img
@@ -78,7 +97,7 @@ function App() {
                 },
               }}
             >
-              ¡Vamos!
+              Ver mi tarot
             </Button>
           </Box>
         </Box>
@@ -143,7 +162,7 @@ function App() {
             }}
           />
 
-          {birthDate && (
+          {/* {birthDate && (
             <Typography variant="body2" sx={{ mb: 1 }}>
               Fecha elegida: {formatDate(birthDate)}
             </Typography>
@@ -153,7 +172,7 @@ function App() {
             <Typography variant="body2" sx={{ mb: 2 }}>
               Edad: {edad}
             </Typography>
-          )}
+          )} */}
 
           {result && (
             <Box
@@ -161,7 +180,7 @@ function App() {
                 flex: 1,
                 overflowY: "auto",
                 width: "100%",
-                mt: 2,
+                mt: 0,
               }}
             >
               <ResultView {...result} />

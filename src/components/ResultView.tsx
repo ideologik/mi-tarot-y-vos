@@ -11,7 +11,7 @@ export default function ResultView({ regente, desafio, ciclo }: ResultProps) {
   return (
     <Box
       sx={{
-        mt: 2,
+        mt: 0,
         ml: 2,
         width: "90%",
         display: "flex",
