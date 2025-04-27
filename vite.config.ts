@@ -20,13 +20,13 @@ export default defineConfig({
         start_url: "/",
         icons: [
           {
-            src: "/favicon-new.ico",
+            src: "/mtvicon.ico",
             sizes: "48x48",
             type: "image/x-icon",
           },
           {
-            src: "/assets/mitarot2.jpg",
-            sizes: "192x192",
+            src: "/mtvicon.ico",
+            sizes: "512x512",
             type: "image/jpeg",
           },
         ],
